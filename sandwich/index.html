@@ -173,6 +173,9 @@
 	.top{
 		margin: 15px 0;
 	}
+	.top strong{
+		font-size: 23px;
+	}
 	.top label{
 		display: flex;
 		align-items: center;
@@ -181,7 +184,10 @@
 	}
 	input[type="checkbox"]{
 		width: auto;
-		margin-left: 10px;
+		margin-left: 5px;
+	}
+	.addons{
+		margin: top: 10px;
 	}
 </style>
 </head>
@@ -200,7 +206,7 @@
 	
 <div class="top" style="direction:rtl;">
 
-    <!-- כריך שניצל -->
+
     <label>
         כריך שניצל
         <input type="checkbox" id="chk1" onclick="toggleAmount('chk1','amount1','subs1')">
@@ -215,7 +221,6 @@
     <div id="subs1" style="margin-bottom:15px;"></div>
 
 
-    <!-- כריך בשר מפורק -->
     <label>
         כריך בשר מפורק
         <input type="checkbox" id="chk2" onclick="toggleAmount('chk2','amount2','subs2')">
@@ -229,8 +234,6 @@
 
     <div id="subs2" style="margin-bottom:15px;"></div>
 
-
-    <!-- שניצלים בקופסא (ללא תתי שדות) -->
     <label>
         שניצלים בקופסא
         <input type="checkbox" id="chk3" onclick="toggleAmount('chk3','amount3')">
@@ -287,7 +290,6 @@
         }
     }
 
-    // יצירת תתי שדות לפי הכמות
     function createSubFields(qtyId, subsDivId) {
         const qty = document.getElementById(qtyId).value;
         const subsDiv = document.getElementById(subsDivId);
@@ -322,7 +324,6 @@
     form.addEventListener("submit", function (event) {
         let valid = true;
 
-        // Name validation
         const name = document.getElementById("name");
         const nameError = document.getElementById("nameError");
         if (name.value.trim() === "") {
@@ -330,7 +331,7 @@
             valid = false;
         } else nameError.style.display = "none";
 
-        // Email validation
+
         const email = document.getElementById("email");
         const emailError = document.getElementById("emailError");
         const emailRegex = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
@@ -339,7 +340,7 @@
             valid = false;
         } else emailError.style.display = "none";
 
-        // Message validation
+ 
         const message = document.getElementById("message");
         const messageError = document.getElementById("messageError");
         if (message.value.trim() === "") {
@@ -347,7 +348,7 @@
             valid = false;
         } else messageError.style.display = "none";
 
-        // Stop form if invalid
+    
         if (!valid) {
             event.preventDefault();
             return;
@@ -359,4 +360,5 @@
 </script>
 
 </body>
+
 </html>
