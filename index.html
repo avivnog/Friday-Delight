@@ -274,7 +274,9 @@ function toggleAmount(checkboxId, amountDivId, subsDivId = null) {
   }
 }
 
-// Create sub-fields with multiple checkboxes per item
+const sandwichOptions = ["חסה", "עגבניה", "מלפפון", "חמוצים", "גבינה", "חרדל", "קטשופ"];
+
+// Create sub-fields with multiple checkboxes and custom labels
 function createSubFields(qtyId, subsDivId) {
   const qty = document.getElementById(qtyId).value;
   const subsDiv = document.getElementById(subsDivId);
@@ -289,14 +291,15 @@ function createSubFields(qtyId, subsDivId) {
     block.style.border = "1px solid #ccc";
     block.style.borderRadius = "8px";
 
+    // Create checkboxes with custom labels
     let checkboxesHTML = "";
-    for (let j = 1; j <= 5; j++) { // 5 checkboxes per item (can increase to 7)
+    sandwichOptions.forEach(option => {
       checkboxesHTML += `
         <label style="margin-right:10px;">
-          <input type="checkbox"> אפשרות ${j}
+          <input type="checkbox"> ${option}
         </label>
       `;
-    }
+    });
 
     block.innerHTML = `
       <strong>פריט ${i}</strong><br>
@@ -354,6 +357,7 @@ function createSubFields(qtyId, subsDivId) {
 
 </body>
 </html>
+
 
 
 
