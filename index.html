@@ -198,47 +198,40 @@
 <section>
     <h2 style="text-align:center">מלאו את הפרטים בזהירות</h2>
 	
-<div class="top" style="direction:rtl;">
+<div class="top" style="direction:rtl; font-family:Arial;">
 
-    <!-- כריך שניצל -->
-    <label>
-	<input type="checkbox" id="chk1" onclick="toggleAmount('chk1','amount1','subs1')">
-        כריך שניצל
-    </label>
+  <!-- כריך שניצל -->
+  <label>
+    כריך שניצל
+    <input type="checkbox" id="chk1" onclick="toggleAmount('chk1','amount1','subs1')">
+  </label>
+  <div id="amount1" style="display:none; margin:5px 0;">
+    <input type="number" id="qty1" min="1" placeholder="כמות"
+           style="padding:8px; width:100%;"
+           oninput="createSubFields('qty1','subs1')">
+  </div>
+  <div id="subs1" style="margin-bottom:15px;"></div>
 
-    <div id="amount1" style="display:none; margin:5px 0;">
-        <input type="number" id="qty1" min="1" placeholder="כמות"
-               style="padding:8px; width:100%;"
-               oninput="createSubFields('qty1','subs1')">
-    </div>
+  <!-- כריך בשר מפורק -->
+  <label>
+    כריך בשר מפורק
+    <input type="checkbox" id="chk2" onclick="toggleAmount('chk2','amount2','subs2')">
+  </label>
+  <div id="amount2" style="display:none; margin:5px 0;">
+    <input type="number" id="qty2" min="1" placeholder="כמות"
+           style="padding:8px; width:100%;"
+           oninput="createSubFields('qty2','subs2')">
+  </div>
+  <div id="subs2" style="margin-bottom:15px;"></div>
 
-    <div id="subs1" style="margin-bottom:15px;"></div>
-
-
-    <!-- כריך בשר מפורק -->
-    <label>      
-        <input type="checkbox" id="chk2" onclick="toggleAmount('chk2','amount2','subs2')">
-		כריך בשר מפורק
-    </label>
-
-    <div id="amount2" style="display:none; margin:5px 0;">
-        <input type="number" id="qty2" min="1" placeholder="כמות"
-               style="padding:8px; width:100%;"
-               oninput="createSubFields('qty2','subs2')">
-    </div>
-
-    <div id="subs2" style="margin-bottom:15px;"></div>
-
-
-    <!-- שניצלים בקופסא (ללא תתי שדות) -->
-    <label> 
-        <input type="checkbox" id="chk3" onclick="toggleAmount('chk3','amount3')">
-		שניצלים בקופסא
-    </label>
-
-    <div id="amount3" style="display:none; margin:5px 0 15px;">
-        <input type="number" min="1" placeholder="כמות" style="padding:8px; width:100%;">
-    </div>
+  <!-- שניצלים בקופסא (ללא תתי שדות) -->
+  <label>
+    שניצלים בקופסא
+    <input type="checkbox" id="chk3" onclick="toggleAmount('chk3','amount3')">
+  </label>
+  <div id="amount3" style="display:none; margin:5px 0 15px;">
+    <input type="number" min="1" placeholder="כמות" style="padding:8px; width:100%;">
+  </div>
 
 </div>
 
@@ -271,50 +264,54 @@
 </section>
 
 <script>
+function toggleAmount(checkboxId, amountDivId, subsDivId = null) {
+  const checkbox = document.getElementById(checkboxId);
+  const amountDiv = document.getElementById(amountDivId);
 
-     function toggleAmount(checkboxId, amountDivId, subsDivId = null) {
-        const checkbox = document.getElementById(checkboxId);
-        const amountDiv = document.getElementById(amountDivId);
+  if (checkbox.checked) {
+    amountDiv.style.display = "block";
+  } else {
+    amountDiv.style.display = "none";
+    amountDiv.querySelector("input").value = "";
+    if (subsDivId) document.getElementById(subsDivId).innerHTML = "";
+  }
+}
 
-        if (checkbox.checked) {
-            amountDiv.style.display = "block";
-        } else {
-            amountDiv.style.display = "none";
-            amountDiv.querySelector("input").value = ""; // איפוס הכמות
-            if (subsDivId) {
-                document.getElementById(subsDivId).innerHTML = ""; // איפוס תתי השדות
-            }
-        }
+// Create sub-fields with multiple checkboxes per item
+function createSubFields(qtyId, subsDivId) {
+  const qty = document.getElementById(qtyId).value;
+  const subsDiv = document.getElementById(subsDivId);
+  subsDiv.innerHTML = "";
+
+  if (qty < 1) return;
+
+  for (let i = 1; i <= qty; i++) {
+    const block = document.createElement("div");
+    block.style.margin = "10px 0";
+    block.style.padding = "10px";
+    block.style.border = "1px solid #ccc";
+    block.style.borderRadius = "8px";
+
+    let checkboxesHTML = "";
+    for (let j = 1; j <= 5; j++) { // 5 checkboxes per item (can increase to 7)
+      checkboxesHTML += `
+        <label style="margin-right:10px;">
+          <input type="checkbox"> אפשרות ${j}
+        </label>
+      `;
     }
 
-    // יצירת תתי שדות לפי הכמות
-    function createSubFields(qtyId, subsDivId) {
-        const qty = document.getElementById(qtyId).value;
-        const subsDiv = document.getElementById(subsDivId);
+    block.innerHTML = `
+      <strong>פריט ${i}</strong><br>
+      ${checkboxesHTML}
+      <br>
+      <input type="text" placeholder="פרטים נוספים עבור פריט ${i}" 
+             style="width:100%; padding:8px; margin-top:5px;">
+    `;
 
-        subsDiv.innerHTML = ""; // איפוס
-
-        if (qty < 1) return;
-
-        for (let i = 1; i <= qty; i++) {
-            const block = document.createElement("div");
-            block.style.margin = "10px 0";
-            block.style.padding = "10px";
-            block.style.border = "1px solid #ccc";
-            block.style.borderRadius = "8px";
-
-            block.innerHTML = `
-                <label>
-                    <input type="checkbox"> אפשרות ${i}
-                </label>
-                <br>
-                <input type="text" placeholder="פרטים עבור אפשרות ${i}"
-                       style="width:100%; padding:8px; margin-top:5px;">
-            `;
-
-            subsDiv.appendChild(block);
-        }
-    }
+    subsDiv.appendChild(block);
+  }
+}
  
  
     const form = document.getElementById("contactForm");
@@ -360,3 +357,4 @@
 
 </body>
 </html>
+
