@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stylish One Pager</title>
+<title>הזמנת אוכל</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -200,10 +200,9 @@
 	
 <div class="top" style="direction:rtl; font-family:Arial;">
 
-  <!-- כריך שניצל -->
-  <label>
-    כריך שניצל
+  <label>    
     <input type="checkbox" id="chk1" onclick="toggleAmount('chk1','amount1','subs1')">
+	  כריך שניצל
   </label>
   <div id="amount1" style="display:none; margin:5px 0;">
     <input type="number" id="qty1" min="1" placeholder="כמות"
@@ -212,10 +211,9 @@
   </div>
   <div id="subs1" style="margin-bottom:15px;"></div>
 
-  <!-- כריך בשר מפורק -->
-  <label>
-    כריך בשר מפורק
+  <label>   
     <input type="checkbox" id="chk2" onclick="toggleAmount('chk2','amount2','subs2')">
+	   כריך בשר מפורק
   </label>
   <div id="amount2" style="display:none; margin:5px 0;">
     <input type="number" id="qty2" min="1" placeholder="כמות"
@@ -224,10 +222,9 @@
   </div>
   <div id="subs2" style="margin-bottom:15px;"></div>
 
-  <!-- שניצלים בקופסא (ללא תתי שדות) -->
   <label>
-    שניצלים בקופסא
     <input type="checkbox" id="chk3" onclick="toggleAmount('chk3','amount3')">
+	    שניצלים בקופסא
   </label>
   <div id="amount3" style="display:none; margin:5px 0 15px;">
     <input type="number" min="1" placeholder="כמות" style="padding:8px; width:100%;">
@@ -357,5 +354,6 @@ function createSubFields(qtyId, subsDivId) {
 
 </body>
 </html>
+
 
 
