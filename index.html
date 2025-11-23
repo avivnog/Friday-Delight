@@ -183,6 +183,13 @@
 		width: auto;
 		margin-left: 10px;
 	}
+	.addons{
+		display: flex;
+		flex-wrap: wrap;	
+	}
+	.addons label{
+	 	margin: 0 0 10px 10px;
+	}
 </style>
 </head>
 
@@ -303,7 +310,8 @@ function createSubFields(qtyId, subsDivId) {
 
     block.innerHTML = `
       <strong>פריט ${i}</strong><br>
-      ${checkboxesHTML}
+	  <div class="addons">${checkboxesHTML}</div>
+     
       <br>
       <input type="text" placeholder="פרטים נוספים עבור פריט ${i}" 
              style="width:100%; padding:8px; margin-top:5px;">
@@ -357,6 +365,7 @@ function createSubFields(qtyId, subsDivId) {
 
 </body>
 </html>
+
 
 
 
