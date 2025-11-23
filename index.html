@@ -176,7 +176,7 @@
 	.top label{
 		display: flex;
 		align-items: center;
-		justify-content: flex-end;
+		justify-content: flex-start;
 		margin-bottom: 10px;
 	}
 	input[type="checkbox"]{
@@ -202,8 +202,8 @@
 
     <!-- כריך שניצל -->
     <label>
+	<input type="checkbox" id="chk1" onclick="toggleAmount('chk1','amount1','subs1')">
         כריך שניצל
-        <input type="checkbox" id="chk1" onclick="toggleAmount('chk1','amount1','subs1')">
     </label>
 
     <div id="amount1" style="display:none; margin:5px 0;">
@@ -216,9 +216,9 @@
 
 
     <!-- כריך בשר מפורק -->
-    <label>
-        כריך בשר מפורק
+    <label>      
         <input type="checkbox" id="chk2" onclick="toggleAmount('chk2','amount2','subs2')">
+		כריך בשר מפורק
     </label>
 
     <div id="amount2" style="display:none; margin:5px 0;">
@@ -231,9 +231,9 @@
 
 
     <!-- שניצלים בקופסא (ללא תתי שדות) -->
-    <label>
-        שניצלים בקופסא
+    <label> 
         <input type="checkbox" id="chk3" onclick="toggleAmount('chk3','amount3')">
+		שניצלים בקופסא
     </label>
 
     <div id="amount3" style="display:none; margin:5px 0 15px;">
