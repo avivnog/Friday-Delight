@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stylish One Pager</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Montserrat", sans-serif;
+    }
+
+    body {
+        background: #f2f4f7;
+        color: #333;
+		 font-family: "Amatic SC", sans-serif;
+		 font-weight: 400;
+		 font-style: normal;
+    }
+	h1, h2, h3{
+	 font-family: "Amatic SC", sans-serif;
+	 font-weight: 700;
+	 font-style: normal;
+	}
+    /* Hero Section */
+    header {
+        background: linear-gradient(135deg, #6a5af9, #5941f2);
+        padding: 100px 20px;
+        text-align: center;
+        color: white;
+		position: relative;
+    }
+	header .bg-image{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-position: center;
+		background-size: cover;
+	}
+	header .bg-color{
+		position: absolute;
+		top: 0;
+		z-index: 2;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0,0,0, 0.6)
+	}
+    header h1 {
+        font-size: 100px;
+        margin-bottom: 10px;
+        animation: fadeDown 0.8s ease;
+		position: relative;
+		z-index: 3;
+    }
+   h2{
+		font-size: 35px;
+   }
+    header p {
+        font-size: 55px;
+		font-weight: 600;
+        opacity: 0.9;
+        animation: fadeDown 1s ease;
+		font-family: "Amatic SC", sans-serif;
+		position: relative;
+		z-index: 3;
+    }
+
+    @keyframes fadeDown {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Form Section */
+    section {
+        max-width: 600px;
+        margin: -50px auto 40px;
+        padding: 30px;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+        animation: fadeUp 0.8s ease;
+		position: relative;
+		z-index: 2;
+    }
+
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    section h2 {
+        font-size: 40px;
+		font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .input-group {
+        margin-top: 15px;
+    }
+
+    label {
+        font-size: 21px;
+		color: #444;
+		margin-bottom: 2px;
+		display: block;
+		text-align: right;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 14px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        transition: 0.2s ease;
+		text-align: right;
+    }
+
+    input:focus, textarea:focus {
+        border-color: #6a5af9;
+        box-shadow: 0 0 0 3px rgba(106, 90, 249, 0.2);
+        outline: none;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 20px;
+        padding: 15px;
+        background: #6a5af9;
+        color: white;
+        border: none;
+        font-size: 50px;
+        border-radius: 10px;
+		font-weight: 600;
+        cursor: pointer;
+        transition: 0.2s ease;
+		font-family: "Amatic SC", sans-serif;
+    }
+
+    button:hover {
+        background: #5941f2;
+    }
+
+    /* Error Messages */
+    .error {
+        color: #e63946;
+        font-size: 14px;
+        margin-top: 4px;
+        display: none;
+    }
+
+    /* Success Message */
+    #successMessage {
+        display: none;
+        padding: 15px;
+        background: #06d6a0;
+        color: white;
+        border-radius: 10px;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 16px;
+    }
+	.top{
+		margin: 15px 0;
+	}
+	.top label{
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		margin-bottom: 10px;
+	}
+	input[type="checkbox"]{
+		width: auto;
+		margin-left: 10px;
+	}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>אוכל ביתי לסופש</h1>
+    <p>משלוחים בתוך הקיבוץ</p>
+	<div class="bg-color"></div>
+	<div class="bg-image" style="background-image: url('290537.jpeg')"></div>
+</header>
+
+<section>
+    <h2 style="text-align:center">מלאו את הפרטים בזהירות</h2>
+	
+<div class="top" style="direction:rtl;">
+
+    <!-- כריך שניצל -->
+    <label>
+        כריך שניצל
+        <input type="checkbox" id="chk1" onclick="toggleAmount('chk1','amount1','subs1')">
+    </label>
+
+    <div id="amount1" style="display:none; margin:5px 0;">
+        <input type="number" id="qty1" min="1" placeholder="כמות"
+               style="padding:8px; width:100%;"
+               oninput="createSubFields('qty1','subs1')">
+    </div>
+
+    <div id="subs1" style="margin-bottom:15px;"></div>
+
+
+    <!-- כריך בשר מפורק -->
+    <label>
+        כריך בשר מפורק
+        <input type="checkbox" id="chk2" onclick="toggleAmount('chk2','amount2','subs2')">
+    </label>
+
+    <div id="amount2" style="display:none; margin:5px 0;">
+        <input type="number" id="qty2" min="1" placeholder="כמות"
+               style="padding:8px; width:100%;"
+               oninput="createSubFields('qty2','subs2')">
+    </div>
+
+    <div id="subs2" style="margin-bottom:15px;"></div>
+
+
+    <!-- שניצלים בקופסא (ללא תתי שדות) -->
+    <label>
+        שניצלים בקופסא
+        <input type="checkbox" id="chk3" onclick="toggleAmount('chk3','amount3')">
+    </label>
+
+    <div id="amount3" style="display:none; margin:5px 0 15px;">
+        <input type="number" min="1" placeholder="כמות" style="padding:8px; width:100%;">
+    </div>
+
+</div>
+
+    <!-- Success notice -->
+    <div id="successMessage">נשלח בהצלחה ✔</div>
+
+    <form id="contactForm" action="https://formsubmit.co/YOUR_EMAIL" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+
+        <div class="input-group">
+            <label>שם</label>
+            <input type="text" id="name" name="name" required>
+            <div class="error" id="nameError">שם</div>
+        </div>
+
+        <div class="input-group">
+            <label>מייל</label>
+            <input type="email" id="email" name="email" required>
+            <div class="error" id="emailError">מלאו מייל תקני</div>
+        </div>
+
+        <div class="input-group">
+            <label>פירוט</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+            <div class="error" id="messageError"></div>
+        </div>
+
+        <button type="submit">שליחה</button>
+    </form>
+</section>
+
+<script>
+
+     function toggleAmount(checkboxId, amountDivId, subsDivId = null) {
+        const checkbox = document.getElementById(checkboxId);
+        const amountDiv = document.getElementById(amountDivId);
+
+        if (checkbox.checked) {
+            amountDiv.style.display = "block";
+        } else {
+            amountDiv.style.display = "none";
+            amountDiv.querySelector("input").value = ""; // איפוס הכמות
+            if (subsDivId) {
+                document.getElementById(subsDivId).innerHTML = ""; // איפוס תתי השדות
+            }
+        }
+    }
+
+    // יצירת תתי שדות לפי הכמות
+    function createSubFields(qtyId, subsDivId) {
+        const qty = document.getElementById(qtyId).value;
+        const subsDiv = document.getElementById(subsDivId);
+
+        subsDiv.innerHTML = ""; // איפוס
+
+        if (qty < 1) return;
+
+        for (let i = 1; i <= qty; i++) {
+            const block = document.createElement("div");
+            block.style.margin = "10px 0";
+            block.style.padding = "10px";
+            block.style.border = "1px solid #ccc";
+            block.style.borderRadius = "8px";
+
+            block.innerHTML = `
+                <label>
+                    <input type="checkbox"> אפשרות ${i}
+                </label>
+                <br>
+                <input type="text" placeholder="פרטים עבור אפשרות ${i}"
+                       style="width:100%; padding:8px; margin-top:5px;">
+            `;
+
+            subsDiv.appendChild(block);
+        }
+    }
+ 
+ 
+    const form = document.getElementById("contactForm");
+
+    form.addEventListener("submit", function (event) {
+        let valid = true;
+
+        // Name validation
+        const name = document.getElementById("name");
+        const nameError = document.getElementById("nameError");
+        if (name.value.trim() === "") {
+            nameError.style.display = "block";
+            valid = false;
+        } else nameError.style.display = "none";
+
+        // Email validation
+        const email = document.getElementById("email");
+        const emailError = document.getElementById("emailError");
+        const emailRegex = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(email.value)) {
+            emailError.style.display = "block";
+            valid = false;
+        } else emailError.style.display = "none";
+
+        // Message validation
+        const message = document.getElementById("message");
+        const messageError = document.getElementById("messageError");
+        if (message.value.trim() === "") {
+            messageError.style.display = "block";
+            valid = false;
+        } else messageError.style.display = "none";
+
+        // Stop form if invalid
+        if (!valid) {
+            event.preventDefault();
+            return;
+        }
+
+        // Show success message
+        document.getElementById("successMessage").style.display = "block";
+    });
+</script>
+
+</body>
+</html>
